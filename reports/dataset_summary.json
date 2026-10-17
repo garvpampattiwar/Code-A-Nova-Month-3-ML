@@ -1,0 +1,29 @@
+{
+    "dataset_name": "UCI SMS Spam Collection",
+    "dataset_license": "Public Domain / Attribution (CC BY 4.0 for UCI ML repository)",
+    "source_url": "https://raw.githubusercontent.com/justmarkham/pycon-2016-tutorial/master/data/sms.tsv",
+    "raw_total_records": 5572,
+    "null_counts": {
+        "label": 0,
+        "message": 0
+    },
+    "duplicate_records": 414,
+    "deduplicated_total_records": 5158,
+    "label_distribution": {
+        "ham": {
+            "count": 4516,
+            "percentage": 87.55
+        },
+        "spam": {
+            "count": 642,
+            "percentage": 12.45
+        }
+    },
+    "statistics": {
+        "avg_char_length_ham": 70.87,
+        "avg_char_length_spam": 137.41,
+        "avg_word_count_ham": 14.24,
+        "avg_word_count_spam": 23.7
+    },
+    "disclaimer": "Model is trained on the verified UCI SMS Spam Collection benchmark dataset. Although tested and evaluated on SMS text communications, text classification and TF-IDF representations generalize to email text patterns with similar vocabulary."
+}

@@ -1,0 +1,50 @@
+{
+    "false_positive_count": 2,
+    "false_negative_count": 13,
+    "false_positives_sample": [
+        {
+            "message": "K:)eng rocking in ashes:)",
+            "actual": "ham",
+            "predicted": "spam",
+            "spam_probability": 0.5453
+        },
+        {
+            "message": "K k:) sms chat with me.",
+            "actual": "ham",
+            "predicted": "spam",
+            "spam_probability": 0.5156
+        }
+    ],
+    "false_negatives_sample": [
+        {
+            "message": "Cashbin.co.uk (Get lots of cash this weekend!) www.cashbin.co.uk Dear Welcome to the weekend We have got our biggest and best EVER cash give away!! These..",
+            "actual": "spam",
+            "predicted": "ham",
+            "spam_probability": 0.2924
+        },
+        {
+            "message": "Sorry I missed your call let's talk when you have the time. I'm on 07090201529",
+            "actual": "spam",
+            "predicted": "ham",
+            "spam_probability": 0.0317
+        },
+        {
+            "message": "LookAtMe!: Thanks for your purchase of a video clip from LookAtMe!, you've been charged 35p. Think you can do better? Why not send a video in a MMSto 32323.",
+            "actual": "spam",
+            "predicted": "ham",
+            "spam_probability": 0.3636
+        },
+        {
+            "message": "TheMob>Yo yo yo-Here comes a new selection of hot downloads for our members to get for FREE! Just click & open the next link sent to ur fone...",
+            "actual": "spam",
+            "predicted": "ham",
+            "spam_probability": 0.4691
+        },
+        {
+            "message": "Hi I'm sue. I am 20 years old and work as a lapdancer. I love sex. Text me live - I'm i my bedroom now. text SUE to 89555. By TextOperator G2 1DA 150ppmsg 18+",
+            "actual": "spam",
+            "predicted": "ham",
+            "spam_probability": 0.339
+        }
+    ]
+}

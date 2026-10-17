@@ -1,0 +1,30 @@
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# Python cache and bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Data and Models
+# Note: Raw small benchmark dataset and trained lightweight model weights can be tracked or excluded based on preference.
+# Excluding temp outputs and checkpoints:
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
+
+# IDE and OS
+.vscode/
+.idea/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example

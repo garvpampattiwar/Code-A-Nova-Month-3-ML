@@ -1,0 +1,55 @@
+{
+    "test_size": 1032,
+    "accuracy": 0.9855,
+    "precision_spam": 0.9829,
+    "recall_spam": 0.8984,
+    "f1_spam": 0.9388,
+    "roc_auc": 0.9931,
+    "confusion_matrix": {
+        "true_negatives_ham": 902,
+        "false_positives_ham_as_spam": 2,
+        "false_negatives_spam_as_ham": 13,
+        "true_positives_spam": 115
+    },
+    "classification_report": {
+        "NOT SPAM (ham)": {
+            "precision": 0.985792349726776,
+            "recall": 0.9977876106194691,
+            "f1-score": 0.9917537108301264,
+            "support": 904.0
+        },
+        "SPAM": {
+            "precision": 0.9829059829059829,
+            "recall": 0.8984375,
+            "f1-score": 0.9387755102040817,
+            "support": 128.0
+        },
+        "accuracy": 0.9854651162790697,
+        "macro avg": {
+            "precision": 0.9843491663163795,
+            "recall": 0.9481125553097345,
+            "f1-score": 0.9652646105171041,
+            "support": 1032.0
+        },
+        "weighted avg": {
+            "precision": 0.9854343507412512,
+            "recall": 0.9854651162790697,
+            "f1-score": 0.9851827712175937,
+            "support": 1032.0
+        }
+    },
+    "cross_validation_comparison": {
+        "MultinomialNB (alpha=0.2)": {
+            "cv_accuracy_mean": 0.9844877834030376,
+            "cv_precision_mean": 0.9727306365109886,
+            "cv_recall_mean": 0.9008376166000381,
+            "cv_f1_mean": 0.9352669552669554
+        },
+        "LogisticRegression (balanced)": {
+            "cv_accuracy_mean": 0.9837610976594029,
+            "cv_precision_mean": 0.9402589611857936,
+            "cv_recall_mean": 0.930039977155911,
+            "cv_f1_mean": 0.9342225344811304
+        }
+    }
+}
