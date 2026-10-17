@@ -1,0 +1,685 @@
+/* ==========================================================================
+   CINEMATCH — THE LAST ROW TICKET BOOTH DESIGN SYSTEM
+   Vintage Cinema Marquee & Ticket Stub Theme
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+    --bg-obsidian: #080A0F;
+    --bg-theatre: #0D1018;
+    --bg-ticket: #131722;
+    --bg-ticket-featured: #171C2B;
+    --amber-marquee: #FFB800;
+    --amber-bright: #FFD043;
+    --amber-dim: #8F6600;
+    --violet-neon: #8A2BE2;
+    --violet-glow: rgba(138, 43, 226, 0.35);
+    --cream-ticket: #F4E9D8;
+    --cream-faded: #C8BDAE;
+    --text-primary: #F0F6FC;
+    --text-secondary: #9DA7B3;
+    --text-muted: #5E6773;
+    --border-ticket: #242B3B;
+    --border-perforation: rgba(244, 233, 216, 0.2);
+    --gold-stamp: #D4AF37;
+}
+
+/* --------------------------------------------------------------------------
+   Streamlit Chrome Removal & Body Defaults
+   -------------------------------------------------------------------------- */
+#MainMenu, header, footer, [data-testid="stDecoration"], [data-testid="stToolbar"] {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+.stApp {
+    background-color: var(--bg-obsidian) !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    color: var(--text-primary) !important;
+    background-image: 
+        radial-gradient(ellipse at 50% 0%, rgba(255, 184, 0, 0.08) 0%, rgba(138, 43, 226, 0.06) 40%, rgba(8, 10, 15, 0) 75%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E") !important;
+}
+
+.main .block-container {
+    padding-top: 1.5rem !important;
+    padding-bottom: 3.5rem !important;
+    max-width: 1240px !important;
+}
+
+/* --------------------------------------------------------------------------
+   Marquee Sign (Hero Section)
+   -------------------------------------------------------------------------- */
+.marquee-container {
+    position: relative;
+    background: linear-gradient(180deg, #121622 0%, #0C0F17 100%);
+    border: 3px solid #2B3345;
+    border-radius: 18px;
+    padding: 26px 28px 24px 28px;
+    margin-bottom: 2rem;
+    box-shadow: 
+        0 14px 40px rgba(0, 0, 0, 0.75),
+        0 0 0 1px rgba(255, 184, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    text-align: center;
+}
+
+.marquee-bulbs-track {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    margin-bottom: 12px;
+}
+
+.bulb {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--amber-marquee);
+    box-shadow: 0 0 8px var(--amber-marquee);
+    transition: all 0.3s ease;
+}
+
+.bulb-even {
+    animation: bulbPulseA 1.6s infinite ease-in-out;
+}
+
+.bulb-odd {
+    animation: bulbPulseB 1.6s infinite ease-in-out;
+}
+
+@keyframes bulbPulseA {
+    0%, 100% { opacity: 0.35; transform: scale(0.85); box-shadow: 0 0 3px var(--amber-marquee); }
+    50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 12px var(--amber-bright), 0 0 24px rgba(255, 184, 0, 0.6); }
+}
+
+@keyframes bulbPulseB {
+    0%, 100% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 12px var(--amber-bright), 0 0 24px rgba(255, 184, 0, 0.6); }
+    50% { opacity: 0.35; transform: scale(0.85); box-shadow: 0 0 3px var(--amber-marquee); }
+}
+
+.marquee-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255, 184, 0, 0.1);
+    border: 1px solid rgba(255, 184, 0, 0.35);
+    color: var(--amber-bright);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.marquee-title {
+    font-family: 'Bebas Neue', 'Anton', sans-serif !important;
+    font-size: 3.8rem !important;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    margin: 4px 0 8px 0 !important;
+    color: var(--cream-ticket);
+    text-shadow: 
+        0 0 16px rgba(255, 184, 0, 0.45),
+        0 0 45px rgba(138, 43, 226, 0.35);
+}
+
+.marquee-title .highlight-amber {
+    color: var(--amber-bright);
+    text-shadow: 0 0 24px rgba(255, 208, 67, 0.8), 0 0 45px rgba(255, 184, 0, 0.5);
+}
+
+.marquee-tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--cream-faded);
+    max-width: 680px;
+    margin: 0 auto;
+    letter-spacing: 0.01em;
+}
+
+/* --------------------------------------------------------------------------
+   Ticket Counter Window (Search Area)
+   -------------------------------------------------------------------------- */
+.ticket-window-wrapper {
+    background: #111520;
+    border: 2px solid #232B3B;
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 22px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.ticket-window-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--amber-bright);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed rgba(255, 184, 0, 0.2);
+}
+
+/* Now Showing Chips */
+.now-showing-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.now-showing-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* --------------------------------------------------------------------------
+   Cinema Ticket Stub (Standard Card)
+   -------------------------------------------------------------------------- */
+.ticket-stub {
+    position: relative;
+    background: var(--bg-ticket);
+    border: 1px solid var(--border-ticket);
+    border-radius: 12px;
+    padding: 22px 20px 18px 20px;
+    margin-bottom: 24px;
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 310px;
+    animation: ticketFadeIn 0.45s ease forwards;
+    overflow: hidden;
+}
+
+@keyframes ticketFadeIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.ticket-stub:hover {
+    transform: translateY(-6px) rotate(-0.35deg);
+    border-color: rgba(138, 43, 226, 0.65);
+    box-shadow: 
+        0 18px 36px rgba(0, 0, 0, 0.6),
+        0 0 24px var(--violet-glow),
+        0 0 0 1px rgba(255, 184, 0, 0.25);
+}
+
+/* Circular notch cutouts on side edges */
+.ticket-notch-left, .ticket-notch-right {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--bg-obsidian);
+    top: 72px;
+    z-index: 2;
+    border: 1px solid var(--border-ticket);
+}
+
+.ticket-notch-left {
+    left: -10px;
+}
+
+.ticket-notch-right {
+    right: -10px;
+}
+
+/* Perforation Line across ticket */
+.ticket-perforation {
+    height: 1px;
+    border-top: 2px dashed var(--border-perforation);
+    margin: 12px -20px 14px -20px;
+}
+
+/* Ticket Serial Header */
+.ticket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.ticket-admit {
+    color: var(--cream-faded);
+    font-weight: 700;
+}
+
+.ticket-serial {
+    color: var(--amber-bright);
+    font-weight: 700;
+}
+
+/* Title in Bebas Neue */
+.ticket-title {
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: 1.85rem !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.04em !important;
+    color: var(--cream-ticket) !important;
+    line-height: 1.15 !important;
+    margin: 8px 0 4px 0 !important;
+}
+
+/* Metadata Bar */
+.ticket-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+.ticket-rating {
+    color: var(--amber-bright);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Genre Pills */
+.ticket-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 12px;
+}
+
+.ticket-genre-pill {
+    background: rgba(244, 233, 216, 0.06);
+    border: 1px solid rgba(244, 233, 216, 0.12);
+    color: var(--cream-faded);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.ticket-genre-highlight {
+    background: rgba(138, 43, 226, 0.18);
+    border: 1px solid rgba(138, 43, 226, 0.45);
+    color: #D8B4FE;
+    font-weight: 600;
+}
+
+/* Match Ring Container */
+.match-ring-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.match-ring-svg {
+    transform: rotate(-90deg);
+}
+
+.match-ring-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.35rem;
+    line-height: 1;
+    color: var(--amber-bright);
+    letter-spacing: 0.05em;
+}
+
+.match-ring-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* Why This Box */
+.ticket-why-box {
+    background: #0B0E14;
+    border-left: 2px solid var(--amber-marquee);
+    border-radius: 0 4px 4px 0;
+    padding: 8px 10px;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.74rem;
+    color: var(--cream-faded);
+    line-height: 1.45;
+}
+
+.why-tag-chip {
+    display: inline-block;
+    background: rgba(255, 184, 0, 0.12);
+    border: 1px solid rgba(255, 184, 0, 0.3);
+    color: var(--amber-bright);
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 0.68rem;
+    margin-right: 4px;
+    margin-bottom: 2px;
+}
+
+/* IMDb Gold Pass Button */
+.ticket-imdb-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(180deg, #F5C518 0%, #D4A809 100%);
+    color: #000000 !important;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 5px 12px;
+    border-radius: 4px;
+    text-decoration: none !important;
+    border: 1px solid #FFD043;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    transition: all 0.2s ease;
+    width: fit-content;
+}
+
+.ticket-imdb-btn:hover {
+    background: #FFE066;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(245, 197, 24, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   Double Feature Highlight Card (#1 Recommendation)
+   -------------------------------------------------------------------------- */
+.double-feature-card {
+    position: relative;
+    background: linear-gradient(135deg, #181E2E 0%, #121622 100%);
+    border: 2px solid rgba(255, 184, 0, 0.45);
+    border-radius: 14px;
+    padding: 24px 26px;
+    margin-bottom: 30px;
+    box-shadow: 
+        0 18px 45px rgba(0, 0, 0, 0.7),
+        0 0 30px rgba(255, 184, 0, 0.12);
+    overflow: hidden;
+    animation: ticketFadeIn 0.35s ease forwards;
+}
+
+.double-feature-card:hover {
+    border-color: rgba(255, 184, 0, 0.75);
+    box-shadow: 
+        0 20px 48px rgba(0, 0, 0, 0.8),
+        0 0 35px rgba(255, 184, 0, 0.2);
+}
+
+.double-feature-banner {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #FFB800 0%, #E5A50A 100%);
+    color: #080A0F;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+    padding: 3px 14px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.double-feature-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: center;
+}
+
+.double-feature-title {
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: 2.5rem !important;
+    color: var(--cream-ticket) !important;
+    letter-spacing: 0.05em !important;
+    line-height: 1.1 !important;
+    margin: 4px 0 6px 0 !important;
+}
+
+/* --------------------------------------------------------------------------
+   Selected Target Ticket Showcase
+   -------------------------------------------------------------------------- */
+.target-ticket-box {
+    position: relative;
+    background: #0E121B;
+    border: 1px dashed rgba(255, 184, 0, 0.4);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 24px;
+}
+
+.target-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--amber-bright);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   Empty and Not-Found States
+   -------------------------------------------------------------------------- */
+.theatre-empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    background: #0E121C;
+    border: 1px dashed #262E40;
+    border-radius: 16px;
+    margin: 30px 0;
+}
+
+.empty-state-icon {
+    font-size: 3.5rem;
+    margin-bottom: 12px;
+    display: inline-block;
+    filter: drop-shadow(0 0 16px rgba(255, 184, 0, 0.4));
+}
+
+.empty-state-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    letter-spacing: 0.06em;
+    color: var(--cream-ticket);
+    margin-bottom: 8px;
+}
+
+.empty-state-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   Projection Booth Sidebar Customization
+   -------------------------------------------------------------------------- */
+[data-testid="stSidebar"] {
+    background-color: var(--bg-theatre) !important;
+    border-right: 1px solid var(--border-ticket) !important;
+    background-image: 
+        radial-gradient(ellipse at 0% 0%, rgba(138, 43, 226, 0.1) 0%, transparent 60%) !important;
+}
+
+.booth-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0 18px 0;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border-ticket);
+}
+
+.booth-title {
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: 1.8rem !important;
+    letter-spacing: 0.08em;
+    color: var(--cream-ticket);
+    margin: 0 !important;
+    line-height: 1;
+}
+
+.booth-subtitle {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--amber-bright);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.booth-section-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.74rem;
+    color: var(--cream-faded);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 16px 0 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   Streamlit Component Overrides (Buttons, Sliders, Selectbox, Tabs)
+   -------------------------------------------------------------------------- */
+/* Primary Buttons */
+.stButton > button[kind="primary"] {
+    background: linear-gradient(180deg, #FFB800 0%, #D49B00 100%) !important;
+    color: #080A0F !important;
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: 1.25rem !important;
+    letter-spacing: 0.08em !important;
+    border: 1px solid #FFD043 !important;
+    border-radius: 6px !important;
+    box-shadow: 0 4px 14px rgba(255, 184, 0, 0.3) !important;
+    transition: all 0.2s ease !important;
+    padding: 6px 20px !important;
+}
+
+.stButton > button[kind="primary"]:hover {
+    background: #FFD043 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(255, 184, 0, 0.45) !important;
+}
+
+/* Secondary Buttons */
+.stButton > button[kind="secondary"] {
+    background: #151A26 !important;
+    color: var(--cream-ticket) !important;
+    font-family: 'Space Mono', monospace !important;
+    font-size: 0.78rem !important;
+    border: 1px solid #2B3547 !important;
+    border-radius: 5px !important;
+    transition: all 0.2s ease !important;
+}
+
+.stButton > button[kind="secondary"]:hover {
+    border-color: var(--amber-bright) !important;
+    color: var(--amber-bright) !important;
+    background: #1C2233 !important;
+}
+
+/* Selectbox */
+[data-baseweb="select"] > div {
+    background-color: #111520 !important;
+    border: 1px solid #283144 !important;
+    border-radius: 6px !important;
+    color: var(--text-primary) !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+[data-baseweb="select"] > div:hover {
+    border-color: rgba(255, 184, 0, 0.5) !important;
+}
+
+/* Sliders */
+[data-testid="stSlider"] [role="slider"] {
+    background-color: var(--amber-bright) !important;
+    box-shadow: 0 0 10px rgba(255, 184, 0, 0.6) !important;
+}
+
+/* Tabs */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+    background-color: transparent !important;
+    border-bottom: 2px solid #1C2333 !important;
+    margin-bottom: 24px;
+}
+
+.stTabs [data-baseweb="tab"] {
+    font-family: 'Space Mono', monospace !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary) !important;
+    padding: 8px 18px !important;
+    background-color: transparent !important;
+    border-radius: 6px 6px 0 0 !important;
+}
+
+.stTabs [aria-selected="true"] {
+    color: var(--amber-bright) !important;
+    border-bottom: 2px solid var(--amber-bright) !important;
+    font-weight: 700 !important;
+}
+
+/* Expanders */
+.streamlit-expanderHeader {
+    background-color: #111520 !important;
+    border: 1px solid #232B3B !important;
+    border-radius: 6px !important;
+    color: var(--cream-ticket) !important;
+    font-family: 'Space Mono', monospace !important;
+    font-size: 0.82rem !important;
+}
+
+/* Responsive Grid adjustments */
+@media (max-width: 992px) {
+    .marquee-title {
+        font-size: 2.8rem !important;
+    }
+    .double-feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .marquee-title {
+        font-size: 2.2rem !important;
+    }
+    .marquee-container {
+        padding: 18px 14px;
+    }
+    .ticket-stub {
+        padding: 18px 14px;
+    }
+}

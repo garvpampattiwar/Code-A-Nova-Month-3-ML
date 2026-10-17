@@ -1,0 +1,10 @@
+{
+    "sample_size": 199,
+    "top_k": 10,
+    "genre_precision_at_k": 0.991,
+    "genre_precision_percentage": 99.1,
+    "intra_list_diversity": 0.3922,
+    "catalog_coverage_percentage": 11.98,
+    "unique_movies_recommended": 1167,
+    "total_catalog_size": 9742
+}
